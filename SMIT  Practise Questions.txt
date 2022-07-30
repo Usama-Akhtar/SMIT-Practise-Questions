@@ -1,0 +1,183 @@
+//Q#1
+function reverse_number(n)
+{
+	n = n + "";
+	return n.split("").reverse().join("");
+}
+console.log(Number(reverse_number(52447)));
+
+
+//Q#2
+function check_Palindrome(str_entry){
+   var cstr = str_entry.toLowerCase().replace(/[^a-zA-Z0-9]+/g,'');
+	var ccount = 0;
+	if(cstr==="") {
+		console.log("Nothing found!");
+		return false;
+	}
+	if ((cstr.length) % 2 === 0) {
+		ccount = (cstr.length) / 2;
+	} else {
+		if (cstr.length === 1) {
+			console.log("Entry is a palindrome.");
+			return true;
+		} else {
+			ccount = (cstr.length - 1) / 2;
+		}
+	}
+	for (var x = 0; x < ccount; x++) {
+		if (cstr[x] != cstr.slice(-1-x)[0]) {
+			console.log("Entry is not a palindrome.");
+			return false;
+		}
+	}
+	console.log("The entry is a palindrome.");
+	return true;
+}
+check_Palindrome('madam');
+check_Palindrome('nurses run');
+check_Palindrome('fox');
+check_Palindrome('102301');
+check_Palindrome('11011');
+
+
+//Q#3
+function combString(str){
+     var lenStr = str.length;
+     var result = [];
+     var indexCurrent = 0;
+
+     while(indexCurrent < lenStr){
+         var char = str.charAt(indexCurrent);
+         var x;
+         var arrTemp = [char];
+
+         for(x in result) {
+             arrTemp.push(""+result[x]+char);
+         }
+         result = result.concat(arrTemp);
+
+         indexCurrent++;
+     }
+
+     return result;
+}
+
+console.log(combString("123456"));
+
+
+//Q#4
+function alphabetic_order(str)
+  {
+return str.split("").sort().join("");
+  }
+console.log(alphabetic_order("technology"));
+
+
+//Q#5
+function uppercase(str)
+{
+  var array1 = str.split(" ");
+  var newarray1 = [];
+    
+  for(var x = 0; x < array1.length; x++){
+      newarray1.push(array1[x].charAt(0).toUpperCase()+array1[x].slice(1));
+  }
+  return newarray1.join(" ");
+}
+console.log(uppercase("i love pakistan"));
+
+
+//Q#6
+function find_longestWord(str)
+{
+  var array1 = str.match(/\w[a-z]{0,}/gi);
+  var result = array1[0];
+
+  for(var x = 1 ; x < array1.length ; x++)
+  {
+    if(result.length < array1[x].length)
+    {
+    result = array1[x];
+    } 
+  }
+  return result;
+}
+console.log(find_longestWord('Web and mobile app development'));
+
+
+//Q#7
+function count_vowel(str1)
+{
+  var vowel_list = 'aeiouAEIOU';
+  var vcount = 0;
+  
+  for(var x = 0; x < str1.length ; x++)
+  {
+    if (vowel_list.indexOf(str1[x]) !== -1)
+    {
+      vcount += 1;
+    }
+  
+  }
+  return vcount;
+}
+console.log(count_vowel("Pakistan is a beautiful country"));
+
+
+//Q#8
+function isPrime(num) {
+  for(var i = 2; i < num; i++)
+    if(num % i === 0) return false;
+  return num > 1;
+}
+
+isPrime(3)
+true
+
+
+//Q#9
+function detect_data_type(value)
+{
+var dtypes = [Function, RegExp, Number, String, Boolean, Object], x, len;
+
+if (typeof value === "object" || typeof value === "function")
+{
+for (x = 0, len = dtypes.length; x < len; x++)
+{
+if (value instanceof dtypes[x])
+{
+return dtypes[x];
+}
+}
+}
+
+return typeof value;
+}
+console.log(detect_data_type(12));
+console.log(detect_data_type('Pakistan'));
+console.log(detect_data_type(true));
+
+
+//Q#10
+function Second_Greatest_Lowest(arr_num)
+{
+  arr_num.sort(function(x,y)
+           {
+           return x-y;
+           });
+  var uniqa = [arr_num[0]];
+  var result = [];
+  
+  for(var j=1; j < arr_num.length; j++)
+  {
+    if(arr_num[j-1] !== arr_num[j])
+    {
+      uniqa.push(arr_num[j]);
+    }
+  }
+    result.push(uniqa[1],uniqa[uniqa.length-2]);
+  return result.join(',');
+  }
+
+console.log(Second_Greatest_Lowest([1,4,9,47,20]))
